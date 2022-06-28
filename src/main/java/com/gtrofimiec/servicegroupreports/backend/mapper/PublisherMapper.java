@@ -6,6 +6,9 @@ import com.gtrofimiec.servicegroupreports.exception.PublisherNotFoundException;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PublisherMapper {
 
@@ -31,5 +34,11 @@ public class PublisherMapper {
                 publisher.getStatus(),
                 publisher.isDeleted()
         );
+    }
+
+    public List<PublisherDto> mapToPublisherDtoList(final @NotNull List<Publisher> publisherList) {
+        return publisherList.stream()
+                .map(this::mapToPublisherDto)
+                .collect(Collectors.toList());
     }
 }

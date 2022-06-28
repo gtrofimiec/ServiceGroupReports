@@ -6,6 +6,9 @@ import com.gtrofimiec.servicegroupreports.exception.MonthlyReportNotFoundExcepti
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MonthlyReportMapper {
 
@@ -37,5 +40,11 @@ public class MonthlyReportMapper {
                 monthlyReport.getGroup(),
                 monthlyReport.isDeleted()
         );
+    }
+
+    public List<MonthlyReportDto> mapToMonthlyReportDtoList(final @NotNull List<MonthlyReport> monthlyReportList) {
+        return monthlyReportList.stream()
+                .map(this::mapToMonthlyReportDto)
+                .collect(Collectors.toList());
     }
 }

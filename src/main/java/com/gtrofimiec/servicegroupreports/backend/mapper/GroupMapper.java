@@ -6,10 +6,13 @@ import com.gtrofimiec.servicegroupreports.exception.GroupNotFoundException;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class GroupMapper {
 
-    public Group mapToServiceGroup(final @NotNull GroupDto groupDto)
+    public Group mapToGroup(final @NotNull GroupDto groupDto)
             throws GroupNotFoundException {
         return new Group(
                 groupDto.getId(),
@@ -20,7 +23,7 @@ public class GroupMapper {
         );
     }
 
-    public GroupDto mapToServiceGroupDto(final @NotNull Group group)
+    public GroupDto mapToGroupDto(final @NotNull Group group)
             throws GroupNotFoundException {
         return new GroupDto(
                 group.getId(),
@@ -29,5 +32,11 @@ public class GroupMapper {
                 group.getMonthlyReportsList(),
                 group.isDeleted()
         );
+    }
+
+    public List<GroupDto> mapToGroupDtoList(final @NotNull List<Group> groupList) {
+        return groupList.stream()
+                .map(this::mapToGroupDto)
+                .collect(Collectors.toList());
     }
 }

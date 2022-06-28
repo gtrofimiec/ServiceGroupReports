@@ -6,10 +6,13 @@ import com.gtrofimiec.servicegroupreports.exception.StatusNotFoundException;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class StatusMapper {
 
-    public Status mapToPublisherStatus(final @NotNull StatusDto statusDto)
+    public Status mapToStatus(final @NotNull StatusDto statusDto)
             throws StatusNotFoundException {
         return new Status(
                 statusDto.getId(),
@@ -18,12 +21,18 @@ public class StatusMapper {
         );
     }
 
-    public StatusDto mapToPublisherStatusDto(final @NotNull Status status)
+    public StatusDto mapToStatusDto(final @NotNull Status status)
             throws StatusNotFoundException {
         return new StatusDto(
                 status.getId(),
                 status.getName(),
                 status.isDeleted()
         );
+    }
+
+    public List<StatusDto> mapToStatusDtoList(final @NotNull List<Status> statusList) {
+        return statusList.stream()
+                .map(this::mapToStatusDto)
+                .collect(Collectors.toList());
     }
 }
