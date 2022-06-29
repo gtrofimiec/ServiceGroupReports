@@ -1,0 +1,43 @@
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table hibernate_sequence (next_val bigint) engine[*]=MyISAM"; oczekiwano "identifier"
+Syntax error in SQL statement "create table hibernate_sequence (next_val bigint) engine[*]=MyISAM"; expected "identifier"; SQL statement:
+create table hibernate_sequence (next_val bigint) engine=MyISAM [42001-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HIBERNATE_SEQUENCE" not found (this database is empty); SQL statement:
+insert into hibernate_sequence values ( 1 ) [42104-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table monthly_report (monthly_report_id bigint not null, monthly_report_date date, monthly_report_deleted bit, monthly_report_films bigint, monthly_report_hours bigint, monthly_report_publications bigint, monthly_report_return_visits bigint, monthly_report_studies bigint, service_privileges_id bigint, primary key (monthly_report_id)) engine[*]=MyISAM"; oczekiwano "identifier"
+Syntax error in SQL statement "create table monthly_report (monthly_report_id bigint not null, monthly_report_date date, monthly_report_deleted bit, monthly_report_films bigint, monthly_report_hours bigint, monthly_report_publications bigint, monthly_report_return_visits bigint, monthly_report_studies bigint, service_privileges_id bigint, primary key (monthly_report_id)) engine[*]=MyISAM"; expected "identifier"; SQL statement:
+create table monthly_report (monthly_report_id bigint not null, monthly_report_date date, monthly_report_deleted bit, monthly_report_films bigint, monthly_report_hours bigint, monthly_report_publications bigint, monthly_report_return_visits bigint, monthly_report_studies bigint, service_privileges_id bigint, primary key (monthly_report_id)) engine=MyISAM [42001-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table publisher (publisher_id bigint not null, publisher_deleted bit, publisher_name varchar(255), publisher_surname varchar(255), service_group_id bigint, service_privilege_id bigint, publisher_status_id bigint, primary key (publisher_id)) engine[*]=MyISAM"; oczekiwano "identifier"
+Syntax error in SQL statement "create table publisher (publisher_id bigint not null, publisher_deleted bit, publisher_name varchar(255), publisher_surname varchar(255), service_group_id bigint, service_privilege_id bigint, publisher_status_id bigint, primary key (publisher_id)) engine[*]=MyISAM"; expected "identifier"; SQL statement:
+create table publisher (publisher_id bigint not null, publisher_deleted bit, publisher_name varchar(255), publisher_surname varchar(255), service_group_id bigint, service_privilege_id bigint, publisher_status_id bigint, primary key (publisher_id)) engine=MyISAM [42001-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table publisher_status (publisher_status_id bigint not null, publisher_status_deleted bit, publisher_status_name varchar(255), primary key (publisher_status_id)) engine[*]=MyISAM"; oczekiwano "identifier"
+Syntax error in SQL statement "create table publisher_status (publisher_status_id bigint not null, publisher_status_deleted bit, publisher_status_name varchar(255), primary key (publisher_status_id)) engine[*]=MyISAM"; expected "identifier"; SQL statement:
+create table publisher_status (publisher_status_id bigint not null, publisher_status_deleted bit, publisher_status_name varchar(255), primary key (publisher_status_id)) engine=MyISAM [42001-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table service_group (service_group_id bigint not null, service_group_deleted bit, service_group_name varchar(255), primary key (service_group_id)) engine[*]=MyISAM"; oczekiwano "identifier"
+Syntax error in SQL statement "create table service_group (service_group_id bigint not null, service_group_deleted bit, service_group_name varchar(255), primary key (service_group_id)) engine[*]=MyISAM"; expected "identifier"; SQL statement:
+create table service_group (service_group_id bigint not null, service_group_deleted bit, service_group_name varchar(255), primary key (service_group_id)) engine=MyISAM [42001-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table service_privileges (service_privileges_id bigint not null, service_privilege_deleted bit, service_privileges_name varchar(255), primary key (service_privileges_id)) engine[*]=MyISAM"; oczekiwano "identifier"
+Syntax error in SQL statement "create table service_privileges (service_privileges_id bigint not null, service_privilege_deleted bit, service_privileges_name varchar(255), primary key (service_privileges_id)) engine[*]=MyISAM"; expected "identifier"; SQL statement:
+create table service_privileges (service_privileges_id bigint not null, service_privilege_deleted bit, service_privileges_name varchar(255), primary key (service_privileges_id)) engine=MyISAM [42001-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "MONTHLY_REPORT" nie istnieje
+Table "MONTHLY_REPORT" not found; SQL statement:
+alter table monthly_report add constraint FKmpcw5ue5a1yu50n5sd0mqybhd foreign key (service_privileges_id) references service_group (service_group_id) [42102-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "PUBLISHER" nie istnieje
+Table "PUBLISHER" not found; SQL statement:
+alter table publisher add constraint FKgdrgl4m2ehtyo4t2bcfcmk2x1 foreign key (service_group_id) references service_group (service_group_id) [42102-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "PUBLISHER" nie istnieje
+Table "PUBLISHER" not found; SQL statement:
+alter table publisher add constraint FK7b3bethir2po1xxidiamxwdrp foreign key (service_privilege_id) references service_privileges (service_privileges_id) [42102-212]
+2022-06-28 15:51:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "PUBLISHER" nie istnieje
+Table "PUBLISHER" not found; SQL statement:
+alter table publisher add constraint FKh7fwjgk3klktgeivv2f2bufij foreign key (publisher_status_id) references publisher_status (publisher_status_id) [42102-212]
